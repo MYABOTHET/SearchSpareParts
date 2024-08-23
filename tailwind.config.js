@@ -1,10 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-  ],
+  content: ["./src/**/*.{html,ts,svg}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        nunito: "Nunito",
+        roboto: "Roboto",
+      },
+    },
   },
-  plugins: [],
-}
+  plugins: ["prettier-plugin-tailwindcss"],
+};
