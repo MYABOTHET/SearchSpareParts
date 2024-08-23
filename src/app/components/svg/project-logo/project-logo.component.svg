@@ -5,9 +5,7 @@
     }
 
     .uuid-a673d69d-214c-4766-b7e2-f81ca324d9b0 {
-      /* По умолчанию логотип не имеет цвета */
       fill: none;
-      /* Дефолтный цвет логотипа */
       /* stroke: #3b82f6; */
       stroke-linecap: round;
       stroke-linejoin: round;

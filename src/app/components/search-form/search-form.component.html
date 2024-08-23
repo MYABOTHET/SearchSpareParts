@@ -1,10 +1,21 @@
-<form (ngSubmit)="submit()">
+<form
+  (ngSubmit)="submit()"
+  class="flex h-8 overflow-hidden rounded border-b border-b-slate-300 bg-white text-xs"
+>
   <label for="search_query"></label>
   <input
     id="search_query"
     type="text"
     placeholder="Введите запрос..."
     [formControl]="search_query"
+    class="flex-auto bg-transparent px-2 placeholder-slate-400 outline-none"
+    autocomplete="off"
+    spellcheck="false"
   />
-  <button>Отправить</button>
+  <div class="my-auto h-2/3 border-r border-r-slate-300"></div>
+  <button class="group w-20 bg-transparent">
+    <app-loupe
+      class="m-auto h-3.5 w-3.5 fill-slate-400 max-sm:duration-75 max-sm:group-active:scale-95"
+    />
+  </button>
 </form>

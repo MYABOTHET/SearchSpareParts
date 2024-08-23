@@ -1,15 +1,14 @@
 import { Component, output, OutputEmitterRef } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgOptimizedImage } from '@angular/common';
+import { LoupeComponent } from '../svg/loupe/loupe.component';
 
 @Component({
   selector: 'app-search-form',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, NgOptimizedImage, LoupeComponent],
   templateUrl: './search-form.component.html',
   styleUrl: './search-form.component.css',
-  host: {
-    class: 'inline-block',
-  },
 })
 export class SearchFormComponent {
   search_query: FormControl<string | null> = new FormControl('');

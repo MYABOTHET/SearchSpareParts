@@ -7,5 +7,8 @@ import { SearchFormComponent } from '../../components/search-form/search-form.co
   imports: [SearchFormComponent],
   templateUrl: './search.page.html',
   styleUrl: './search.page.css',
+  host: {
+    class: 'flex justify-center',
+  },
 })
 export class SearchPage {}
