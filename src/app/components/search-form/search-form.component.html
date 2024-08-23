@@ -1,0 +1,10 @@
+<form (ngSubmit)="submit()">
+  <label for="search_query"></label>
+  <input
+    id="search_query"
+    type="text"
+    placeholder="Введите запрос..."
+    [formControl]="search_query"
+  />
+  <button>Отправить</button>
+</form>
