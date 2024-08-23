@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ProjectLogoComponent } from '../svg/project-logo/project-logo.component';
 import { RouterLink } from '@angular/router';
-import { NavigationLink } from '../../shared/component-data/interfaces/navigation-link';
+import { NavigationLink } from '../../shared/interfaces/navigation-link';
 
 @Component({
   selector: 'app-header',

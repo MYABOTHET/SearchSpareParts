@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BaseSvgComponent } from '../base-svg/base-svg.component';
+import { SvgComponent } from '../svg/svg.component';
 
 @Component({
   selector: 'app-project-logo',
@@ -7,4 +7,4 @@ import { BaseSvgComponent } from '../base-svg/base-svg.component';
   imports: [],
   templateUrl: './project-logo.component.svg',
 })
-export class ProjectLogoComponent extends BaseSvgComponent {}
+export class ProjectLogoComponent extends SvgComponent {}

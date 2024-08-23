@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Бренд</th>
+      <th>Артикул</th>
+      <th>Наименование</th>
+      <th>Остаток</th>
+      <th>Цена</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (spare_part of spare_parts; track spare_part.article) {
+      <tr>
+        <td>{{ spare_part.brand }}</td>
+        <td>{{ spare_part.article }}</td>
+        <td>{{ spare_part.name }}</td>
+        <td>{{ spare_part.remainder }}</td>
+        <td>{{ spare_part.price }}</td>
+      </tr>
+    }
+  </tbody>
+</table>

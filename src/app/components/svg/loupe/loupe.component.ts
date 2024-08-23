@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BaseSvgComponent } from '../base-svg/base-svg.component';
+import { SvgComponent } from '../svg/svg.component';
 
 @Component({
   selector: 'app-loupe',
@@ -7,4 +7,4 @@ import { BaseSvgComponent } from '../base-svg/base-svg.component';
   imports: [],
   templateUrl: './loupe.component.svg',
 })
-export class LoupeComponent extends BaseSvgComponent {}
+export class LoupeComponent extends SvgComponent {}
