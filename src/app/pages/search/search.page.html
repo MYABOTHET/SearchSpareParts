@@ -7,16 +7,18 @@
 
 <!--<div class="h-4"></div>-->
 
-<!--<app-spare-parts-table-user-->
+<app-spare-parts-table-user
+  [spare_parts]="spare_parts"
+  class="w-full max-w-screen-2xl"
+  (quantity_emitter)="quantity_emitter($event)"
+/>
+
+<!--<div class="h-4"></div>-->
+
+<!--<app-spare-parts-table-admin-->
 <!--  [spare_parts]="spare_parts"-->
 <!--  class="w-full max-w-screen-2xl"-->
 <!--  (quantity_emitter)="quantity_emitter($event)"-->
 <!--/>-->
 
-<!--<div class="h-4"></div>-->
-
-<app-spare-parts-table-admin
-  [spare_parts]="spare_parts"
-  class="w-full max-w-screen-2xl"
-  (quantity_emitter)="quantity_emitter($event)"
-/>
+<div class="h-4"></div>

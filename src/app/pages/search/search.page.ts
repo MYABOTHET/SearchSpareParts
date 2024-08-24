@@ -22,48 +22,27 @@ import { SparePartsTableAdminComponent } from '../../components/spare-parts-tabl
   },
 })
 export class SearchPage {
-  spare_parts: SparePartAdmin[] = [
-    {
-      brand: 'ACCURIDE',
-      article: '397310101201',
-      name: 'Направляющая втулка клапана DC11/DSC12 (114/124) старый образец (VAG96314)',
-      remainder: 10,
-      price: 10000,
-      sum: 10000,
-      quantity: 10,
-      supplier: 'Комтранс',
-      price_two: 10000,
-      price_three: 10000,
-      code: '00031426',
-    },
-    {
-      brand: 'ACCURIDE',
-      article: '397310101202',
-      name: 'Направляющая втулка клапана DC11/DSC12 (114/124) старый образец (VAG96314)',
-      remainder: 100,
-      price: 10000,
-      sum: 100000,
-      quantity: 10,
-      supplier: 'Комтранс',
-      price_two: 10000,
-      price_three: 10000,
-      code: '00031426',
-    },
-    {
-      brand: 'ACCURIDE',
-      article: '397310101203',
-      name: 'Направляющая втулка клапана DC11/DSC12 (114/124) старый образец (VAG96314)',
-      remainder: 100,
-      price: 10000,
-      sum: 100000,
-      quantity: 10,
-      supplier: 'Комтранс',
-      price_two: 10000,
-      price_three: 10000,
-      code: '00031426',
-    },
-  ];
+  spare_parts: SparePartAdmin[] = [];
+
+  constructor() {
+    for (let i = 0; i < 300; i++) {
+      this.spare_parts.push({
+        brand: 'ACCURIDE',
+        article: `39731010120${i}`,
+        name: 'Направляющая втулка клапана DC11/DSC12 (114/124) старый образец (VAG96314)',
+        quantity: 10,
+        price: 10000,
+        sum: 10000,
+        quantity_basket: 10,
+        supplier: 'Комтранс',
+        price_two: 10000,
+        price_three: 10000,
+        code: '00031426',
+      });
+    }
+  }
+
   quantity_emitter(spare_part_user: SparePartUser): void {
-    console.log(spare_part_user.quantity);
+    console.log(spare_part_user);
   }
 }

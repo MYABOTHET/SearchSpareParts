@@ -26,9 +26,13 @@
   }
 }
 
-body::-webkit-scrollbar {
-  width: 0;
+html {
+  overflow-y: scroll;
 }
+
+/*body::-webkit-scrollbar {*/
+/*  width: 0;*/
+/*}*/
 
 input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;

@@ -24,10 +24,12 @@
         <td>{{ spare_part.article }}</td>
         <td>{{ spare_part.name }}</td>
         <td class="text-right">
-          {{ spare_part.remainder.toLocaleString() }}
+          {{ spare_part.quantity.toLocaleString() }}
         </td>
         <td class="text-right">{{ spare_part.price.toLocaleString() }}</td>
-        <td class="text-right">{{ spare_part.price_two.toLocaleString() }}</td>
+        <td class="text-right">
+          {{ spare_part.price_two.toLocaleString() }}
+        </td>
         <td class="text-right">
           {{ spare_part.price_three.toLocaleString() }}
         </td>
@@ -38,12 +40,17 @@
             placeholder="0"
             type="number"
             #quantity_input
-            [(ngModel)]="spare_part.quantity"
+            [(ngModel)]="spare_part.quantity_basket"
             (input)="change_quantity(spare_part, $index)"
           />
         </td>
         <td class="text-right">
-          {{ find_sum(spare_part.quantity, spare_part.price).toLocaleString() }}
+          {{
+            find_sum(
+              spare_part.quantity_basket,
+              spare_part.price
+            ).toLocaleString()
+          }}
         </td>
         <td class="py-0">
           <div class="flex h-full">

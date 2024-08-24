@@ -26,7 +26,7 @@ export class SparePartsTableUserComponent {
   @Input() spare_parts: SparePartUser[] = [];
   quantity_emitter: OutputEmitterRef<SparePartUser> = output<SparePartUser>();
   private old_index: number | null = null;
-  private old_quantity: number | null = null;
+  private old_quantity_basket: number | null = null;
 
   find_sum(quantity: number, price: number): number {
     return quantity * price;
@@ -39,38 +39,41 @@ export class SparePartsTableUserComponent {
   change_quantity(spare_part_user: SparePartUser, index: number): void {
     let quantity_input: HTMLInputElement =
       this.quantity_inputs.get(index)!.nativeElement;
-    if (spare_part_user.quantity < 0 || spare_part_user.quantity === null) {
-      spare_part_user.quantity = 0;
-      quantity_input.value = spare_part_user.quantity.toString();
-    } else if (spare_part_user.quantity > spare_part_user.remainder) {
-      spare_part_user.quantity = spare_part_user.remainder;
-      quantity_input.value = spare_part_user.quantity.toString();
+    if (
+      spare_part_user.quantity_basket < 0 ||
+      spare_part_user.quantity_basket === null
+    ) {
+      spare_part_user.quantity_basket = 0;
+      quantity_input.value = spare_part_user.quantity_basket.toString();
+    } else if (spare_part_user.quantity_basket > spare_part_user.quantity) {
+      spare_part_user.quantity_basket = spare_part_user.quantity;
+      quantity_input.value = spare_part_user.quantity_basket.toString();
     }
-    quantity_input.value = spare_part_user.quantity.toString();
+    quantity_input.value = spare_part_user.quantity_basket.toString();
     if (
       this.old_index === index &&
-      this.old_quantity === spare_part_user.quantity
+      this.old_quantity_basket === spare_part_user.quantity_basket
     ) {
       return;
     }
     this.old_index = index;
-    this.old_quantity = spare_part_user.quantity;
+    this.old_quantity_basket = spare_part_user.quantity_basket;
     this.submit(spare_part_user);
   }
 
   minus(spare_part_user: SparePartUser): void {
-    if (spare_part_user.quantity <= 0) {
+    if (spare_part_user.quantity_basket <= 0) {
       return;
     }
-    --spare_part_user.quantity;
+    --spare_part_user.quantity_basket;
     this.submit(spare_part_user);
   }
 
   add(spare_part_user: SparePartUser): void {
-    if (spare_part_user.quantity >= spare_part_user.remainder) {
+    if (spare_part_user.quantity_basket >= spare_part_user.quantity) {
       return;
     }
-    ++spare_part_user.quantity;
+    ++spare_part_user.quantity_basket;
     this.submit(spare_part_user);
   }
 }

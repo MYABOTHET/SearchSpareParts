@@ -4,7 +4,7 @@
       <th class="w-24">Бренд</th>
       <th class="w-28">Артикул</th>
       <th>Наименование</th>
-      <th class="w-20">Остаток</th>
+      <th class="w-20">Кол-во</th>
       <th class="w-20">Цена</th>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
         <td>{{ spare_part.article }}</td>
         <td>{{ spare_part.name }}</td>
         <td class="text-right">
-          {{ spare_part.remainder.toLocaleString() }}
+          {{ spare_part.quantity.toLocaleString() }}
         </td>
         <td class="text-right">{{ spare_part.price.toLocaleString() }}</td>
       </tr>
