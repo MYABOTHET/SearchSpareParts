@@ -5,14 +5,12 @@ import {
   output,
   OutputEmitterRef,
   QueryList,
-  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { SparePartUser } from '../../../shared/interfaces/spare-part-user';
 import { PlusComponent } from '../../svg/plus/plus.component';
 import { MinusComponent } from '../../svg/minus/minus.component';
 import { FormsModule } from '@angular/forms';
-import { Event } from '@angular/router';
 
 @Component({
   selector: 'app-spare-parts-table-user',
@@ -29,6 +27,10 @@ export class SparePartsTableUserComponent {
   quantity_emitter: OutputEmitterRef<SparePartUser> = output<SparePartUser>();
   private old_index: number | null = null;
   private old_quantity: number | null = null;
+
+  find_sum(quantity: number, price: number): number {
+    return quantity * price;
+  }
 
   submit(spare_part_user: SparePartUser): void {
     this.quantity_emitter.emit(spare_part_user);

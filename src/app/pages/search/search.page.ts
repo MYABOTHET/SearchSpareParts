@@ -4,6 +4,7 @@ import { SparePartsTableComponent } from '../../components/spare-parts-tables/sp
 import { SparePartAdmin } from '../../shared/interfaces/spare-part-admin';
 import { SparePartsTableUserComponent } from '../../components/spare-parts-tables/spare-parts-table-user/spare-parts-table-user.component';
 import { SparePartUser } from '../../shared/interfaces/spare-part-user';
+import { SparePartsTableAdminComponent } from '../../components/spare-parts-tables/spare-parts-table-admin/spare-parts-table-admin.component';
 
 @Component({
   selector: 'app-search',
@@ -12,6 +13,7 @@ import { SparePartUser } from '../../shared/interfaces/spare-part-user';
     SearchFormComponent,
     SparePartsTableComponent,
     SparePartsTableUserComponent,
+    SparePartsTableAdminComponent,
   ],
   templateUrl: './search.page.html',
   styleUrl: './search.page.css',
@@ -25,9 +27,9 @@ export class SearchPage {
       brand: 'ACCURIDE',
       article: '397310101201',
       name: 'Направляющая втулка клапана DC11/DSC12 (114/124) старый образец (VAG96314)',
-      remainder: 100,
+      remainder: 10,
       price: 10000,
-      sum: 100000,
+      sum: 10000,
       quantity: 10,
       supplier: 'Комтранс',
       price_two: 10000,

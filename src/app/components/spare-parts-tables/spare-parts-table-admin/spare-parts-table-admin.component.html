@@ -1,26 +1,36 @@
 <table class="spare-parts-table">
   <thead>
     <tr>
-      <th class="w-24">Бренд</th>
+      <th class="w-20">Поставщик</th>
+      <th class="w-20">Бренд</th>
+      <th class="w-20">Код</th>
       <th class="w-28">Артикул</th>
       <th>Наименование</th>
-      <th class="w-20">Остаток</th>
-      <th class="w-20">Цена</th>
-      <th class="w-20">Кол-во</th>
-      <th class="w-20">Сумма</th>
+      <th class="w-18">Кол-во</th>
+      <th class="w-18">Цена(1)</th>
+      <th class="w-18">Цена(2)</th>
+      <th class="w-18">Цена(3)</th>
+      <th class="w-18">В корзине</th>
+      <th class="w-18">Сумма</th>
       <th class="w-18"></th>
     </tr>
   </thead>
   <tbody>
     @for (spare_part of spare_parts; track spare_part.article) {
       <tr>
+        <td>{{ spare_part.supplier }}</td>
         <td>{{ spare_part.brand }}</td>
+        <td>{{ spare_part.code }}</td>
         <td>{{ spare_part.article }}</td>
         <td>{{ spare_part.name }}</td>
         <td class="text-right">
           {{ spare_part.remainder.toLocaleString() }}
         </td>
         <td class="text-right">{{ spare_part.price.toLocaleString() }}</td>
+        <td class="text-right">{{ spare_part.price_two.toLocaleString() }}</td>
+        <td class="text-right">
+          {{ spare_part.price_three.toLocaleString() }}
+        </td>
         <td class="py-0">
           <input
             [id]="spare_part.article"

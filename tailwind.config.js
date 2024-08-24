@@ -13,6 +13,10 @@ module.exports = {
       backgroundColor: {
         "blue-350": "#e3f0ff",
       },
+      width: {
+        18: "4.5rem",
+        26: "6.5rem",
+      },
     },
   },
   plugins: ["prettier-plugin-tailwindcss"],
