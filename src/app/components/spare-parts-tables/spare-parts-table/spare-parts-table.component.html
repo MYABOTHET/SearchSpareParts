@@ -1,0 +1,24 @@
+<table class="spare-parts-table">
+  <thead>
+    <tr>
+      <th class="w-28">Бренд</th>
+      <th class="w-32">Артикул</th>
+      <th>Наименование</th>
+      <th class="w-24">Остаток</th>
+      <th class="w-24">Цена</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (spare_part of spare_parts; track spare_part.article) {
+      <tr>
+        <td>{{ spare_part.brand }}</td>
+        <td>{{ spare_part.article }}</td>
+        <td>{{ spare_part.name }}</td>
+        <td class="text-right">
+          {{ spare_part.remainder.toLocaleString() }}
+        </td>
+        <td class="text-right">{{ spare_part.price.toLocaleString() }}</td>
+      </tr>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,52 @@
+<table class="spare-parts-table">
+  <thead>
+    <tr>
+      <th class="w-28">Бренд</th>
+      <th class="w-32">Артикул</th>
+      <th>Наименование</th>
+      <th class="w-24">Остаток</th>
+      <th class="w-24">Цена</th>
+      <th class="w-20">Кол-во</th>
+      <th class="w-24">Сумма</th>
+      <th class="w-20"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (spare_part of spare_parts; track spare_part.article) {
+      <tr>
+        <td>{{ spare_part.brand }}</td>
+        <td>{{ spare_part.article }}</td>
+        <td>{{ spare_part.name }}</td>
+        <td class="text-right">
+          {{ spare_part.remainder.toLocaleString() }}
+        </td>
+        <td class="text-right">{{ spare_part.price.toLocaleString() }}</td>
+        <td class="py-0">
+          <input
+            class="h-full w-full bg-transparent text-right placeholder-slate-400 outline-none"
+            placeholder="0"
+            type="number"
+            #quantity_input
+            [(ngModel)]="spare_part.quantity"
+            (input)="change_quantity(spare_part, $index)"
+          />
+        </td>
+        <td class="text-right">{{ spare_part.sum.toLocaleString() }}</td>
+        <td class="py-0">
+          <div class="flex h-full">
+            <button class="group w-full" (click)="add(spare_part)">
+              <app-plus
+                class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
+              />
+            </button>
+            <button class="group w-full" (click)="minus(spare_part)">
+              <app-minus
+                class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
+              />
+            </button>
+          </div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

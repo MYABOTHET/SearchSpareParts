@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .spare-parts-table {
+    @apply overflow-hidden rounded bg-white text-xs shadow-slate-300 w-full h-0
+  }
+  .spare-parts-table thead {
+    @apply text-nowrap border-b-2 border-b-blue-700 bg-blue-600 text-white
+  }
+  .spare-parts-table th, td {
+    @apply py-1.5 pl-0 pr-2
+  }
+  .spare-parts-table th {
+    @apply font-medium
+  }
+  .spare-parts-table tbody {
+    @apply break-all
+  }
+  .spare-parts-table tbody > tr:nth-child(even) {
+    @apply bg-blue-350
+  }
+  .spare-parts-table tr > :first-child {
+    @apply pl-2
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

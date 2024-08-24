@@ -1,3 +1,14 @@
-<app-search-form class="m-4 w-full max-w-96" />
+<app-search-form class="my-4 w-full max-w-96" />
 
-<app-spare-parts-table [spare_parts]="spare_parts" />
+<app-spare-parts-table
+  [spare_parts]="spare_parts"
+  class="w-full max-w-screen-xl"
+/>
+
+<div class="h-4"></div>
+
+<app-spare-parts-table-user
+  [spare_parts]="spare_parts"
+  class="w-full max-w-screen-2xl"
+  (quantity_emitter)="quantity_emitter($event)"
+/>

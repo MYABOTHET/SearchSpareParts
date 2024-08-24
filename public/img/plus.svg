@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-2caa295f-e5bc-4069-a9da-2b3d2205d728" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <style>.uuid-ddea9e38-f787-4696-ac05-d8dc4a1fbf07 {
+      fill: #94a3b8;
+    }</style>
+  </defs>
+  <rect class="uuid-ddea9e38-f787-4696-ac05-d8dc4a1fbf07" x="103" width="50" height="256" rx="25" ry="25" />
+  <rect class="uuid-ddea9e38-f787-4696-ac05-d8dc4a1fbf07" y="103" width="256" height="50" rx="25" ry="25" />
+</svg>
