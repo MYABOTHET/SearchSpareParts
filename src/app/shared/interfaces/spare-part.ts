@@ -4,4 +4,5 @@ export interface SparePart {
   name: string;
   quantity: number;
   price: number;
+  search_index: string;
 }

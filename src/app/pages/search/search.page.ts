@@ -11,6 +11,7 @@ import { ListSparePartsCardsUserComponent } from '../../components/lists-spare-p
 import { ListSparePartsCardsAdminComponent } from '../../components/lists-spare-parts-cards/list-spare-parts-cards-admin/list-spare-parts-cards-admin.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SpinnerLoadComponent } from '../../components/svg/spinner-load/spinner-load.component';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-search',
@@ -34,10 +35,14 @@ import { SpinnerLoadComponent } from '../../components/svg/spinner-load/spinner-
 })
 export class SearchPage implements OnInit, OnDestroy {
   is_loaded: boolean = false;
+  is_error: boolean = false;
   spare_parts: SparePartAdmin[] = [];
   is_screen_small: boolean = false;
-  constructor(private breakpointObserver: BreakpointObserver) {
-    for (let i = 0; i < 5; i++) {
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    public authService: AuthService,
+  ) {
+    for (let i = 0; i < 13; i++) {
       this.spare_parts.push({
         brand: 'ACCURIDE',
         article: `39731010120${i}`,
@@ -50,27 +55,38 @@ export class SearchPage implements OnInit, OnDestroy {
         price_two: 10000,
         price_three: 10000,
         code: '00031426',
+        search_index: Math.floor(Math.random() * 1000000).toString(),
       });
     }
   }
 
   ngOnInit(): void {
-    this.breakpointObserver
-      .observe('(max-width: 600px)')
-      .subscribe((result) => {
-        this.is_screen_small = result.matches;
-      });
+    let max_width: string = '(max-width: 600px)';
+    if (this.authService.isAuth()) {
+      switch (this.get_role()) {
+        case 'user': max_width = '(max-width: 1000px)'; break;
+        case 'admin': max_width = '(max-width: 1100px)'; break;
+      }
+    }
+    this.breakpointObserver.observe(max_width).subscribe((result) => {
+      this.is_screen_small = result.matches;
+    });
+    this.is_loaded = true;
   }
 
   quantity_emitter(spare_part: SparePartUser): void {
-    console.log(spare_part.quantity_basket);
+    console.log(spare_part.search_index);
   }
 
   search_query_emitter(search_query: string): void {
-    console.log(search_query);
+
   }
 
   ngOnDestroy(): void {
     this.breakpointObserver.ngOnDestroy();
+  }
+
+  get_role(): string {
+    return localStorage.getItem('role') ?? 'null';
   }
 }

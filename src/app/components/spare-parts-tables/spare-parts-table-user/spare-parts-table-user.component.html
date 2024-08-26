@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    @for (spare_part of spare_parts; track spare_part.article) {
+    @for (spare_part of spare_parts; track spare_part.search_index) {
       @defer (on viewport) {
         <tr>
           <td>{{ spare_part.brand }}</td>

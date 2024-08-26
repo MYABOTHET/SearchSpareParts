@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ProjectLogoComponent } from '../svg/project-logo/project-logo.component';
 import { RouterLink } from '@angular/router';
 import { NavigationLink } from '../../shared/interfaces/navigation-link';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-header',

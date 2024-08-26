@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    @for (spare_part of spare_parts; track spare_part.article) {
+    @for (spare_part of spare_parts; track spare_part.search_index) {
       @defer (on viewport) {
         <tr>
           <td>{{ spare_part.supplier }}</td>
@@ -36,7 +36,7 @@
           </td>
           <td class="py-0">
             <input
-              [id]="spare_part.article"
+              [id]="spare_part.search_index"
               class="h-full w-full bg-transparent text-right placeholder-slate-400 outline-none"
               placeholder="0"
               type="number"

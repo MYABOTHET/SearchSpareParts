@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, effect, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationLink } from './shared/interfaces/navigation-link';
 import { environment } from '../environments/environment';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,26 @@ export class AppComponent {
     title: environment.project_title,
     href: '/',
   };
-  navigation_links: NavigationLink[] = [
-    { title: 'maxpower', href: '/authorization' },
-    { title: 'Корзина', href: '/spare-parts-basket' },
-    { title: 'О нас', href: '/about-us' },
-  ];
+  navigation_links: NavigationLink[] = [];
+
+  constructor(private authService: AuthService) {
+    effect(() => {
+      this.navigation_links = [];
+      if (this.authService.isAuth()) {
+        this.navigation_links.push(
+          { title: 'maxpower', href: '/authorization' },
+          {
+            title: 'Корзина',
+            href: '/spare-parts-basket',
+          },
+        );
+      } else {
+        this.navigation_links.push({
+          title: 'Авторизация',
+          href: '/authorization',
+        });
+      }
+      this.navigation_links.push({ title: 'О нас', href: '/about-us' });
+    });
+  }
 }

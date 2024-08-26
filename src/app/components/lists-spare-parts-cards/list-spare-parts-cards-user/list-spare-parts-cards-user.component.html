@@ -1,4 +1,4 @@
-@for (spare_part of spare_parts; track spare_part.article) {
+@for (spare_part of spare_parts; track spare_part.search_index) {
   @defer (on viewport) {
     <app-spare-part-card-user
       [spare_part]="spare_part"
