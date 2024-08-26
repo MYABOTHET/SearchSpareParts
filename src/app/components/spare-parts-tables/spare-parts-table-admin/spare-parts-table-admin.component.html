@@ -17,56 +17,59 @@
   </thead>
   <tbody>
     @for (spare_part of spare_parts; track spare_part.article) {
-      <tr>
-        <td>{{ spare_part.supplier }}</td>
-        <td>{{ spare_part.brand }}</td>
-        <td>{{ spare_part.code }}</td>
-        <td>{{ spare_part.article }}</td>
-        <td>{{ spare_part.name }}</td>
-        <td class="text-right">
-          {{ spare_part.quantity.toLocaleString() }}
-        </td>
-        <td class="text-right">{{ spare_part.price.toLocaleString() }}</td>
-        <td class="text-right">
-          {{ spare_part.price_two.toLocaleString() }}
-        </td>
-        <td class="text-right">
-          {{ spare_part.price_three.toLocaleString() }}
-        </td>
-        <td class="py-0">
-          <input
-            [id]="spare_part.article"
-            class="h-full w-full bg-transparent text-right placeholder-slate-400 outline-none"
-            placeholder="0"
-            type="number"
-            #quantity_input
-            [(ngModel)]="spare_part.quantity_basket"
-            (input)="change_quantity(spare_part, $index)"
-          />
-        </td>
-        <td class="text-right">
-          {{
-            find_sum(
-              spare_part.quantity_basket,
-              spare_part.price
-            ).toLocaleString()
-          }}
-        </td>
-        <td class="py-0">
-          <div class="flex h-full">
-            <button class="group w-full" (click)="add(spare_part)">
-              <app-plus
-                class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
-              />
-            </button>
-            <button class="group w-full" (click)="minus(spare_part)">
-              <app-minus
-                class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
-              />
-            </button>
-          </div>
-        </td>
-      </tr>
+      @defer (on viewport) {
+        <tr>
+          <td>{{ spare_part.supplier }}</td>
+          <td>{{ spare_part.brand }}</td>
+          <td>{{ spare_part.code }}</td>
+          <td>{{ spare_part.article }}</td>
+          <td>{{ spare_part.name }}</td>
+          <td class="text-right">
+            {{ spare_part.quantity.toLocaleString() }}
+          </td>
+          <td class="text-right">{{ spare_part.price.toLocaleString() }}</td>
+          <td class="text-right">
+            {{ spare_part.price_two.toLocaleString() }}
+          </td>
+          <td class="text-right">
+            {{ spare_part.price_three.toLocaleString() }}
+          </td>
+          <td class="py-0">
+            <input
+              [id]="spare_part.article"
+              class="h-full w-full bg-transparent text-right placeholder-slate-400 outline-none"
+              placeholder="0"
+              type="number"
+              #quantity_input
+              [(ngModel)]="spare_part.quantity_basket"
+              (input)="change_quantity(spare_part, $index)"
+            />
+          </td>
+          <td class="text-right">
+            {{
+              (spare_part.quantity_basket * spare_part.price).toLocaleString()
+            }}
+          </td>
+          <td class="py-0">
+            <div class="flex h-full">
+              <button class="group w-full" (click)="add(spare_part)">
+                <app-plus
+                  class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
+                />
+              </button>
+              <button class="group w-full" (click)="minus(spare_part)">
+                <app-minus
+                  class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
+                />
+              </button>
+            </div>
+          </td>
+        </tr>
+      } @placeholder {
+        <tr class="text-slate-400">
+          <td colspan="12">Загрузка...</td>
+        </tr>
+      }
     }
   </tbody>
 </table>

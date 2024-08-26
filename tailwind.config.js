@@ -17,6 +17,9 @@ module.exports = {
         18: "4.5rem",
         26: "6.5rem",
       },
+      screens: {
+        "small-phone": "370px",
+      },
     },
   },
   plugins: ["prettier-plugin-tailwindcss"],

@@ -13,15 +13,7 @@
   </thead>
   <tbody>
     @for (spare_part of spare_parts; track spare_part.article) {
-      @if ($index > 25) {
-        @defer (on viewport) {
-          <div class="h-7">Component</div>
-        } @placeholder {
-          <tr class="text-transparent">
-            <td colspan="8">Загрузка...</td>
-          </tr>
-        }
-      } @else {
+      @defer (on viewport) {
         <tr>
           <td>{{ spare_part.brand }}</td>
           <td>{{ spare_part.article }}</td>
@@ -45,10 +37,7 @@
           </td>
           <td class="text-right">
             {{
-              find_sum(
-                spare_part.quantity_basket,
-                spare_part.price
-              ).toLocaleString()
+              (spare_part.quantity_basket * spare_part.price).toLocaleString()
             }}
           </td>
           <td class="py-0">
@@ -65,6 +54,10 @@
               </button>
             </div>
           </td>
+        </tr>
+      } @placeholder {
+        <tr class="text-slate-400">
+          <td colspan="8">Загрузка...</td>
         </tr>
       }
     }

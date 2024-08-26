@@ -10,15 +10,21 @@
   </thead>
   <tbody>
     @for (spare_part of spare_parts; track spare_part.article) {
-      <tr>
-        <td>{{ spare_part.brand }}</td>
-        <td>{{ spare_part.article }}</td>
-        <td>{{ spare_part.name }}</td>
-        <td class="text-right">
-          {{ spare_part.quantity.toLocaleString() }}
-        </td>
-        <td class="text-right">{{ spare_part.price.toLocaleString() }}</td>
-      </tr>
+      @defer (on viewport) {
+        <tr>
+          <td>{{ spare_part.brand }}</td>
+          <td>{{ spare_part.article }}</td>
+          <td>{{ spare_part.name }}</td>
+          <td class="text-right">
+            {{ spare_part.quantity.toLocaleString() }}
+          </td>
+          <td class="text-right">{{ spare_part.price.toLocaleString() }}</td>
+        </tr>
+      } @placeholder {
+        <tr class="text-slate-400">
+          <td colspan="5">Загрузка...</td>
+        </tr>
+      }
     }
   </tbody>
 </table>

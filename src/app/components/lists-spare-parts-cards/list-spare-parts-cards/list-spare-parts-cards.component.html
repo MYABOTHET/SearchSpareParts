@@ -1,0 +1,7 @@
+@for (spare_part of spare_parts; track spare_part.article) {
+  @defer (on viewport) {
+    <app-spare-part-card [spare_part]="spare_part" />
+  } @placeholder {
+    <div class="h-32"></div>
+  }
+}

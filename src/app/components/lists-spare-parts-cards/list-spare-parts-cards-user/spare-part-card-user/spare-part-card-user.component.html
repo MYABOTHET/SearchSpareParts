@@ -1,0 +1,75 @@
+<div class="spare-part-card pb-1">
+  <div>
+    <div>
+      <p>Бренд</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.brand }}</p>
+  </div>
+  <div>
+    <div>
+      <p>Артикул</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.article }}</p>
+  </div>
+  <div>
+    <div>
+      <p>Наименование</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.name }}</p>
+  </div>
+  <div>
+    <div>
+      <p>Количество</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.quantity }}</p>
+  </div>
+  <div>
+    <div>
+      <p>Цена</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.price.toLocaleString() }}</p>
+  </div>
+  <div>
+    <div>
+      <p>В корзине</p>
+      <div></div>
+    </div>
+    <p class="w-full">
+      <input
+        [id]="spare_part.article"
+        class="h-full w-full bg-transparent placeholder-slate-400 outline-none"
+        placeholder="0"
+        type="number"
+        #quantity_input
+        [(ngModel)]="spare_part.quantity_basket"
+        (input)="change_quantity(spare_part)"
+      />
+    </p>
+  </div>
+  <div>
+    <div>
+      <p>Сумма</p>
+      <div></div>
+    </div>
+    <p>
+      {{ (spare_part.quantity_basket * spare_part.price).toLocaleString() }}
+    </p>
+  </div>
+  <div class="h-7">
+    <button class="group w-full" (click)="add(spare_part)">
+      <app-plus
+        class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
+      />
+    </button>
+    <button class="group w-full" (click)="minus(spare_part)">
+      <app-minus
+        class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
+      />
+    </button>
+  </div>
+</div>

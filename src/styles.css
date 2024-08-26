@@ -24,6 +24,22 @@
   .spare-parts-table tr > :first-child {
     @apply pl-2
   }
+
+  .spare-part-card {
+    @apply flex flex-col gap-2 overflow-hidden rounded border-b border-b-slate-300 bg-white px-3 py-3 text-xs
+  }
+  .spare-part-card > div {
+    @apply flex
+  }
+  .spare-part-card > div > div {
+    @apply max-small-phone:min-w-28 flex min-w-32
+  }
+  .spare-part-card > div > div > div {
+    @apply mx-1 h-4 flex-auto border-b border-dotted border-b-slate-300
+  }
+  .spare-part-card > div > div > p {
+    @apply text-slate-400 after:content-[':']
+  }
 }
 
 html {
