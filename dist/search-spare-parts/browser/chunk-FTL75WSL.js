@@ -1,0 +1,1 @@
+import{X as n,db as o}from"./chunk-32OXVGFN.js";var s=class e{static \u0275fac=function(t){return new(t||e)};static \u0275cmp=n({type:e,selectors:[["ng-component"]],hostAttrs:[1,"flex"],standalone:!0,features:[o],decls:0,vars:0,template:function(t,p){},encapsulation:2})};export{s as a};
