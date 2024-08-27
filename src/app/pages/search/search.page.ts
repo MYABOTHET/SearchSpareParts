@@ -36,7 +36,7 @@ import { SparePart } from '../../shared/interfaces/spare-part';
   },
 })
 export class SearchPage implements OnInit, OnDestroy {
-  is_loaded: boolean = false;
+  is_loaded: boolean = true;
   is_error: boolean = false;
   spare_parts: SparePart[] = [];
   spare_parts_user: SparePartUser[] = [];
@@ -64,7 +64,7 @@ export class SearchPage implements OnInit, OnDestroy {
     this.breakpointObserver.observe(max_width).subscribe((result) => {
       this.is_screen_small = result.matches;
     });
-    this.is_loaded = true;
+    this.search_query_emitter('');
   }
 
   quantity_emitter(spare_part: SparePartUser): void {
