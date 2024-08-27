@@ -52,6 +52,7 @@ export class AuthorizationPage {
         this.authService.isAuth.set(true);
         localStorage.setItem('isAuth', 'true');
         localStorage.setItem('role', result.role);
+        this.router.navigate(['..'], { relativeTo: this.activatedRoute });
       },
       error: (error: HttpErrorResponse) => {
         this.error_message = error.statusText;

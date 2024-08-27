@@ -12,6 +12,8 @@ import { ListSparePartsCardsAdminComponent } from '../../components/lists-spare-
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SpinnerLoadComponent } from '../../components/svg/spinner-load/spinner-load.component';
 import { AuthService } from '../../shared/services/auth.service';
+import { SearchService } from '../../shared/services/search.service';
+import { SparePart } from '../../shared/interfaces/spare-part';
 
 @Component({
   selector: 'app-search',
@@ -36,36 +38,27 @@ import { AuthService } from '../../shared/services/auth.service';
 export class SearchPage implements OnInit, OnDestroy {
   is_loaded: boolean = false;
   is_error: boolean = false;
-  spare_parts: SparePartAdmin[] = [];
+  spare_parts: SparePart[] = [];
+  spare_parts_user: SparePartUser[] = [];
+  spare_parts_admin: SparePartAdmin[] = [];
   is_screen_small: boolean = false;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     public authService: AuthService,
-  ) {
-    for (let i = 0; i < 13; i++) {
-      this.spare_parts.push({
-        brand: 'ACCURIDE',
-        article: `39731010120${i}`,
-        name: 'Направляющая втулка клапана DC11/DSC12 (114/124) старый образец (VAG96314)',
-        quantity: 10,
-        price: 10000,
-        sum: 10000,
-        quantity_basket: 10,
-        supplier: 'Комтранс',
-        price_two: 10000,
-        price_three: 10000,
-        code: '00031426',
-        search_index: Math.floor(Math.random() * 1000000).toString(),
-      });
-    }
-  }
+    private search_service: SearchService,
+  ) {}
 
   ngOnInit(): void {
     let max_width: string = '(max-width: 600px)';
     if (this.authService.isAuth()) {
       switch (this.get_role()) {
-        case 'user': max_width = '(max-width: 1000px)'; break;
-        case 'admin': max_width = '(max-width: 1100px)'; break;
+        case 'user':
+          max_width = '(max-width: 1000px)';
+          break;
+        case 'admin':
+          max_width = '(max-width: 1100px)';
+          break;
       }
     }
     this.breakpointObserver.observe(max_width).subscribe((result) => {
@@ -79,7 +72,37 @@ export class SearchPage implements OnInit, OnDestroy {
   }
 
   search_query_emitter(search_query: string): void {
-
+    this.is_loaded = false;
+    this.is_error = false;
+    this.spare_parts = [];
+    this.spare_parts_user = [];
+    this.spare_parts_admin = [];
+    this.search_service.search(search_query).subscribe({
+      next: (spare_parts) => {
+        if (this.authService.isAuth()) {
+          switch (this.get_role()) {
+            case 'user': {
+              this.spare_parts_user = spare_parts as SparePartUser[];
+              break;
+            }
+            case 'admin': {
+              this.spare_parts_admin = spare_parts as SparePartAdmin[];
+              break;
+            }
+            default: {
+              this.spare_parts = spare_parts as SparePart[];
+            }
+          }
+        } else {
+          this.spare_parts = spare_parts as SparePart[];
+        }
+        this.is_loaded = true;
+      },
+      error: (HttpErrorResponse) => {
+        this.is_loaded = true;
+        this.is_error = true;
+      },
+    });
   }
 
   ngOnDestroy(): void {

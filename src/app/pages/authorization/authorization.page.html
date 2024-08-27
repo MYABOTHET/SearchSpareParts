@@ -2,9 +2,10 @@
   <button
     (click)="logout()"
     [ngClass]="{
-    'opacity-0 cursor-default': !authService.isAuth()
+    'opacity-0 cursor-default': !authService.isAuth(),
+    'opacity-100': authService.isAuth(),
     }"
-    class="w-full max-w-64 p-4 text-xs text-slate-400 opacity-0 hover:text-slate-500"
+    class="w-full max-w-64 p-4 text-xs text-slate-400 hover:text-slate-500"
   >
     Выйти из аккаунта
   </button>
@@ -29,25 +30,27 @@
         id="email"
         name="email"
         placeholder="Email"
-        class="w-full rounded bg-slate-100 p-2 placeholder-slate-400 outline-none duration-75"
+        class="w-full rounded p-2 outline-none duration-75"
         formControlName="email"
         [ngClass]="{
+        'placeholder-slate-400 bg-slate-100': email_is_valid,
         'bg-red-50 placeholder-red-500': !email_is_valid
         }"
       />
       <label for="password"></label>
       <input
+        [ngClass]="{
+        'bg-slate-100 placeholder-slate-400': password_is_valid,
+        'bg-red-50 placeholder-red-500': !password_is_valid
+        }"
         autocomplete="off"
         spellcheck="false"
         type="password"
         id="password"
         name="password"
         placeholder="Password"
-        class="w-full rounded bg-slate-100 p-2 placeholder-slate-400 outline-none duration-75"
+        class="w-full rounded p-2 outline-none duration-75"
         formControlName="password"
-        [ngClass]="{
-        'bg-red-50 placeholder-red-500': !password_is_valid
-        }"
       />
       <button
         class="m-auto my-1.5 w-20 rounded-full bg-blue-600 p-2 text-white duration-75 hover:bg-blue-700"
@@ -59,8 +62,9 @@
   <div
     [ngClass]="{
     'opacity-100': error_message,
+    'opacity-0': !error_message
     }"
-    class="mt-4 flex h-8 min-w-52 items-center justify-center rounded-full border-b border-b-slate-300 bg-white px-4 text-center text-xs text-red-600 opacity-0"
+    class="mt-4 flex h-8 min-w-52 items-center justify-center rounded-full border-b border-b-slate-300 bg-white px-4 text-center text-xs text-red-600"
   >
     {{ error_message }}
   </div>

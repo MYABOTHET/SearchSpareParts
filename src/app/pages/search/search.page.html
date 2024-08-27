@@ -5,76 +5,58 @@
   (search_query_emitter)="search_query_emitter($event)"
 />
 
-@if (is_loaded) {
-  @if (!is_error) {
-    @if (spare_parts.length) {
-      @if (authService.isAuth()) {
-        @switch (get_role()) {
-          @case ('user') {
-            @if (is_screen_small) {
-              <app-list-spare-parts-cards-user
-                [spare_parts]="spare_parts"
-                class="flex w-full flex-col gap-4"
-                (quantity_emitter)="quantity_emitter($event)"
-              />
-            } @else {
-              <app-spare-parts-table-user
-                [spare_parts]="spare_parts"
-                class="w-full max-w-screen-xl"
-                (quantity_emitter)="quantity_emitter($event)"
-              />
-            }
-          }
-          @case ('admin') {
-            @if (is_screen_small) {
-              <app-list-spare-parts-cards-admin
-                [spare_parts]="spare_parts"
-                class="flex w-full flex-col gap-4"
-                (quantity_emitter)="quantity_emitter($event)"
-              />
-            } @else {
-              <app-spare-parts-table-admin
-                [spare_parts]="spare_parts"
-                class="w-full max-w-screen-2xl"
-                (quantity_emitter)="quantity_emitter($event)"
-              />
-            }
-          }
-          @default {
-            @if (is_screen_small) {
-              <app-list-spare-parts-cards
-                [spare_parts]="spare_parts"
-                class="flex w-full flex-col gap-4"
-              />
-            } @else {
-              <app-spare-parts-table
-                [spare_parts]="spare_parts"
-                class="w-full max-w-screen-lg"
-              />
-            }
-          }
-        }
-      } @else {
-        @if (is_screen_small) {
-          <app-list-spare-parts-cards
-            [spare_parts]="spare_parts"
-            class="flex w-full flex-col gap-4"
-          />
-        } @else {
-          <app-spare-parts-table
-            [spare_parts]="spare_parts"
-            class="w-full max-w-screen-lg"
-          />
-        }
-      }
-    } @else {
-      <span class="text-xs text-slate-400">Ничего не найдено</span>
-    }
-  } @else {
-    <span class="text-xs text-slate-400">Произошла ошибка</span>
-  }
+@if (is_loaded) { @if (!is_error) { @if (spare_parts.length) { @if
+(authService.isAuth()) { @switch (get_role()) { @case ('user') { @if
+(is_screen_small) {
+<app-list-spare-parts-cards-user
+  [spare_parts]="spare_parts_user"
+  class="flex w-full flex-col gap-4"
+  (quantity_emitter)="quantity_emitter($event)"
+/>
 } @else {
-  <app-spinner-load class="h-10 w-10 fill-blue-600" />
+<app-spare-parts-table-user
+  [spare_parts]="spare_parts_user"
+  class="w-full max-w-screen-xl"
+  (quantity_emitter)="quantity_emitter($event)"
+/>
+} } @case ('admin') { @if (is_screen_small) {
+<app-list-spare-parts-cards-admin
+  [spare_parts]="spare_parts_admin"
+  class="flex w-full flex-col gap-4"
+  (quantity_emitter)="quantity_emitter($event)"
+/>
+} @else {
+<app-spare-parts-table-admin
+  [spare_parts]="spare_parts_admin"
+  class="w-full max-w-screen-2xl"
+  (quantity_emitter)="quantity_emitter($event)"
+/>
+} } @default { @if (is_screen_small) {
+<app-list-spare-parts-cards
+  [spare_parts]="spare_parts"
+  class="flex w-full flex-col gap-4"
+/>
+} @else {
+<app-spare-parts-table
+  [spare_parts]="spare_parts"
+  class="w-full max-w-screen-lg"
+/>
+} } } } @else { @if (is_screen_small) {
+<app-list-spare-parts-cards
+  [spare_parts]="spare_parts"
+  class="flex w-full flex-col gap-4"
+/>
+} @else {
+<app-spare-parts-table
+  [spare_parts]="spare_parts"
+  class="w-full max-w-screen-lg"
+/>
+} } } @else {
+<span class="text-xs text-slate-400">Ничего не найдено</span>
+} } @else {
+<span class="text-xs text-slate-400">Произошла ошибка</span>
+} } @else {
+<app-spinner-load class="h-10 w-10 fill-blue-600" />
 }
 
 <div class="h-4"></div>
