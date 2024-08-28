@@ -6,8 +6,9 @@
 />
 
 @if (is_loaded) { @if (!is_error) { @if (spare_parts.length ||
-spare_parts_user.length || spare_parts_admin) { @if (authService.isAuth()) {
-@switch (get_role()) { @case ('user') { @if (is_screen_small) {
+spare_parts_user.length || spare_parts_admin.length) { @if
+(authService.isAuth()) { @switch (get_role()) { @case ('user') { @if
+(is_screen_small) {
 <app-list-spare-parts-cards-user
   [spare_parts]="spare_parts_user"
   class="flex w-full flex-col gap-4"
