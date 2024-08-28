@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
   project_title: 'Поисковик',
-  apiUrl: 'https://sh.maxpower.keenetic.name/UT/hs/search/SearchEngine',
+  apiUrl: 'https://sh.maxpower.keenetic.name/UT/SearchSpareParts',
 };
