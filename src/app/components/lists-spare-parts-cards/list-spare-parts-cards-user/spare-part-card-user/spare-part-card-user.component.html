@@ -32,7 +32,7 @@
       <p>Цена</p>
       <div></div>
     </div>
-    <p>{{ spare_part.price.toLocaleString() }}</p>
+    <p>{{ spare_part.price.toLocaleString("ru-RU") }}</p>
   </div>
   <div>
     <div>
@@ -57,7 +57,9 @@
       <div></div>
     </div>
     <p>
-      {{ (spare_part.quantity_basket * spare_part.price).toLocaleString() }}
+      {{
+        (spare_part.quantity_basket * spare_part.price).toLocaleString("ru-RU")
+      }}
     </p>
   </div>
   <div class="h-7">
