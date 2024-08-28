@@ -52,6 +52,10 @@ export class AuthorizationPage {
         this.authService.isAuth.set(true);
         localStorage.setItem('isAuth', 'true');
         localStorage.setItem('role', result.role);
+        localStorage.setItem(
+          'name',
+          this.authorization_form.get('name')?.value ?? 'null',
+        );
         this.router.navigate(['..'], { relativeTo: this.activatedRoute });
       },
       error: (error: HttpErrorResponse) => {

@@ -24,7 +24,10 @@ export class AppComponent {
       this.navigation_links = [];
       if (this.authService.isAuth()) {
         this.navigation_links.push(
-          { title: 'maxpower', href: '/authorization' },
+          {
+            title: localStorage.getItem('name') ?? 'Пользователь',
+            href: '/authorization',
+          },
           {
             title: 'Корзина',
             href: '/spare-parts-basket',
