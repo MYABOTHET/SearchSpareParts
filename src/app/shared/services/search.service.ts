@@ -15,7 +15,7 @@ export class SearchService {
   search(
     search_query: string,
   ): Observable<SparePart[] | SparePartUser[] | SparePartAdmin[]> {
-    let url: string = environment.apiUrl + '/Search';
+    let url: string = environment.apiUrl + '/search';
     return this.http.get<SparePart[] | SparePartUser[] | SparePartAdmin[]>(
       url,
       {
