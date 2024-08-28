@@ -40,6 +40,9 @@
   .spare-part-card > div > div > p {
     @apply text-slate-400 after:content-[':']
   }
+  .spare-part-card > div > p {
+    @apply break-all
+  }
 }
 
 html {
