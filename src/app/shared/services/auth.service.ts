@@ -17,12 +17,12 @@ export class AuthService {
   }
 
   login(login_dto: LoginDto): Observable<RoleDto> {
-    let url: string = environment.apiUrl + '/login';
+    let url: string = environment.apiUrl + '/Login';
     return this.http.post<RoleDto>(url, login_dto, { withCredentials: true });
   }
 
   logout(): Observable<void> {
-    let url: string = environment.apiUrl + '/logout';
+    let url: string = environment.apiUrl + '/Logout';
     return this.http.post<void>(url, null, { withCredentials: true });
   }
 }

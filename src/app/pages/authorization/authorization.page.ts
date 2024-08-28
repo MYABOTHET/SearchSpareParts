@@ -21,10 +21,10 @@ import { RoleDto } from '../../shared/dto/role.dto';
 })
 export class AuthorizationPage {
   authorization_form: FormGroup = new FormGroup({
-    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    name: new FormControl<string>('', [Validators.required]),
     password: new FormControl<string>('', [Validators.required]),
   });
-  email_is_valid: boolean = true;
+  name_is_valid: boolean = true;
   password_is_valid: boolean = true;
   error_message: string = '';
 
@@ -36,10 +36,10 @@ export class AuthorizationPage {
 
   auth() {
     this.error_message = '';
-    this.email_is_valid = this.authorization_form.get('email')?.valid ?? false;
+    this.name_is_valid = this.authorization_form.get('name')?.valid ?? false;
     this.password_is_valid =
       this.authorization_form.get('password')?.valid ?? false;
-    if (!this.email_is_valid || !this.password_is_valid) {
+    if (!this.name_is_valid || !this.password_is_valid) {
       return;
     }
     this.authService.login(this.authorization_form.value).subscribe({
@@ -55,7 +55,11 @@ export class AuthorizationPage {
         this.router.navigate(['..'], { relativeTo: this.activatedRoute });
       },
       error: (error: HttpErrorResponse) => {
-        this.error_message = error.statusText;
+        if (error.status === 403) {
+          this.error_message = 'Неправильный логин или пароль';
+        } else {
+          this.error_message = 'Неизвестная ошибка';
+        }
       },
     });
   }

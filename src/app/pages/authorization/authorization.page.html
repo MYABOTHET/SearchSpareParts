@@ -22,19 +22,18 @@
       [formGroup]="authorization_form"
       class="flex flex-col gap-2 bg-white px-4 py-2 text-xs"
     >
-      <label for="email"></label>
+      <label for="name"></label>
       <input
-        autocomplete="off"
         spellcheck="false"
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Email"
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Name"
         class="w-full rounded p-2 outline-none"
-        formControlName="email"
+        formControlName="name"
         [ngClass]="{
-        'placeholder-slate-400 bg-slate-100 duration-75': email_is_valid,
-        'bg-red-50 placeholder-red-500 duration-75': !email_is_valid
+        'placeholder-slate-400 bg-slate-100 duration-75': name_is_valid,
+        'bg-red-50 placeholder-red-500 duration-75': !name_is_valid
         }"
       />
       <label for="password"></label>
@@ -43,7 +42,6 @@
         'bg-slate-100 placeholder-slate-400 duration-75': password_is_valid,
         'bg-red-50 placeholder-red-500 duration-75': !password_is_valid
         }"
-        autocomplete="off"
         spellcheck="false"
         type="password"
         id="password"

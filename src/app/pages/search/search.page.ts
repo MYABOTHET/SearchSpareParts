@@ -64,8 +64,7 @@ export class SearchPage implements OnInit, OnDestroy {
     this.breakpointObserver.observe(max_width).subscribe((result) => {
       this.is_screen_small = result.matches;
     });
-    // this.search_query_emitter('');
-    console.log('test test test');
+    this.search_query_emitter('');
   }
 
   quantity_emitter(spare_part: SparePartUser): void {}
