@@ -25,13 +25,13 @@
       <p>Количество</p>
       <div></div>
     </div>
-    <p>{{ spare_part.quantity }}</p>
+    <p>{{ Number(spare_part.quantity) }}</p>
   </div>
   <div>
     <div>
       <p>Цена</p>
       <div></div>
     </div>
-    <p>{{ spare_part.price.toLocaleString("ru-RU") }}</p>
+    <p>{{ Number(spare_part.price).toLocaleString("ru-RU") }}</p>
   </div>
 </div>

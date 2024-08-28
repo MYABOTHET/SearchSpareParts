@@ -14,4 +14,5 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class SparePartCardAdminComponent extends SparePartCardUserComponent {
   @Input({ required: true }) declare spare_part: SparePartAdmin;
+  protected readonly Number = Number;
 }

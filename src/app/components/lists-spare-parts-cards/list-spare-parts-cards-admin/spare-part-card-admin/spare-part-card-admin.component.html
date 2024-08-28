@@ -39,28 +39,28 @@
       <p>Количество</p>
       <div></div>
     </div>
-    <p>{{ spare_part.quantity }}</p>
+    <p>{{ Number(spare_part.quantity) }}</p>
   </div>
   <div>
     <div>
       <p>Цена(1)</p>
       <div></div>
     </div>
-    <p>{{ spare_part.price.toLocaleString("ru-RU") }}</p>
+    <p>{{ Number(spare_part.price).toLocaleString("ru-RU") }}</p>
   </div>
   <div>
     <div>
       <p>Цена(2)</p>
       <div></div>
     </div>
-    <p>{{ spare_part.price_two.toLocaleString("ru-RU") }}</p>
+    <p>{{ Number(spare_part.price_two).toLocaleString("ru-RU") }}</p>
   </div>
   <div>
     <div>
       <p>Цена(3)</p>
       <div></div>
     </div>
-    <p>{{ spare_part.price_three.toLocaleString("ru-RU") }}</p>
+    <p>{{ Number(spare_part.price_three).toLocaleString("ru-RU") }}</p>
   </div>
   <div>
     <div>
@@ -74,7 +74,7 @@
         placeholder="0"
         type="number"
         #quantity_input
-        [(ngModel)]="spare_part.quantity_basket"
+        [(ngModel)]="Number(spare_part.quantity_basket)"
         (input)="change_quantity(spare_part)"
       />
     </p>
@@ -86,7 +86,9 @@
     </div>
     <p>
       {{
-        (spare_part.quantity_basket * spare_part.price).toLocaleString("ru-RU")
+        (
+          Number(spare_part.quantity_basket) * Number(spare_part.price)
+        ).toLocaleString("ru-RU")
       }}
     </p>
   </div>

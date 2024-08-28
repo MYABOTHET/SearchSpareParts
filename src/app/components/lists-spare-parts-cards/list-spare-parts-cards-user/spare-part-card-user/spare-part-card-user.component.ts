@@ -43,4 +43,6 @@ export class SparePartCardUserComponent {
   minus(spare_part: SparePartUser): void {
     this.minus_emitter.emit(spare_part);
   }
+
+  protected readonly Number = Number;
 }

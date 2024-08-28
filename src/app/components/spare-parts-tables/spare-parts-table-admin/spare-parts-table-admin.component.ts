@@ -14,4 +14,5 @@ import { SparePartAdmin } from '../../../shared/interfaces/spare-part-admin';
 })
 export class SparePartsTableAdminComponent extends SparePartsTableUserComponent {
   @Input() override spare_parts: SparePartAdmin[] = [];
+  protected readonly Number = Number;
 }

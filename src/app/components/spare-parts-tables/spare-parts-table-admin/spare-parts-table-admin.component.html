@@ -25,16 +25,16 @@
           <td>{{ spare_part.article }}</td>
           <td>{{ spare_part.name }}</td>
           <td class="text-right">
-            {{ spare_part.quantity.toLocaleString("ru-RU") }}
+            {{ Number(spare_part.quantity).toLocaleString("ru-RU") }}
           </td>
           <td class="text-right">
-            {{ spare_part.price.toLocaleString("ru-RU") }}
+            {{ Number(spare_part.price).toLocaleString("ru-RU") }}
           </td>
           <td class="text-right">
-            {{ spare_part.price_two.toLocaleString("ru-RU") }}
+            {{ Number(spare_part.price_two).toLocaleString("ru-RU") }}
           </td>
           <td class="text-right">
-            {{ spare_part.price_three.toLocaleString("ru-RU") }}
+            {{ Number(spare_part.price_three).toLocaleString("ru-RU") }}
           </td>
           <td class="py-0">
             <input
@@ -43,15 +43,15 @@
               placeholder="0"
               type="number"
               #quantity_input
-              [(ngModel)]="spare_part.quantity_basket"
+              [(ngModel)]="Number(spare_part.quantity_basket)"
               (input)="change_quantity(spare_part, $index)"
             />
           </td>
           <td class="text-right">
             {{
-              (spare_part.quantity_basket * spare_part.price).toLocaleString(
-                "ru-RU"
-              )
+              (
+                Number(spare_part.quantity_basket) * Number(spare_part.price)
+              ).toLocaleString("ru-RU")
             }}
           </td>
           <td class="py-0">
