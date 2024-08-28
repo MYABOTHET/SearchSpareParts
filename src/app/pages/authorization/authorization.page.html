@@ -30,18 +30,18 @@
         id="email"
         name="email"
         placeholder="Email"
-        class="w-full rounded p-2 outline-none duration-75"
+        class="w-full rounded p-2 outline-none"
         formControlName="email"
         [ngClass]="{
-        'placeholder-slate-400 bg-slate-100': email_is_valid,
-        'bg-red-50 placeholder-red-500': !email_is_valid
+        'placeholder-slate-400 bg-slate-100 duration-75': email_is_valid,
+        'bg-red-50 placeholder-red-500 duration-75': !email_is_valid
         }"
       />
       <label for="password"></label>
       <input
         [ngClass]="{
-        'bg-slate-100 placeholder-slate-400': password_is_valid,
-        'bg-red-50 placeholder-red-500': !password_is_valid
+        'bg-slate-100 placeholder-slate-400 duration-75': password_is_valid,
+        'bg-red-50 placeholder-red-500 duration-75': !password_is_valid
         }"
         autocomplete="off"
         spellcheck="false"
@@ -49,7 +49,7 @@
         id="password"
         name="password"
         placeholder="Password"
-        class="w-full rounded p-2 outline-none duration-75"
+        class="w-full rounded p-2 outline-none"
         formControlName="password"
       />
       <button
