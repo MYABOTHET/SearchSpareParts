@@ -31,7 +31,7 @@
               placeholder="0"
               type="number"
               #quantity_input
-              [(ngModel)]="Number(spare_part.quantity_basket)"
+              [(ngModel)]="spare_part.quantity_basket"
               (input)="change_quantity(spare_part, $index)"
             />
           </td>
