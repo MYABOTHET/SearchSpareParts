@@ -16,10 +16,10 @@
           <td>{{ spare_part.article }}</td>
           <td>{{ spare_part.name }}</td>
           <td class="text-right">
-            {{ Number(spare_part.quantity).toLocaleString("ru-RU") }}
+            {{ spare_part.quantity }}
           </td>
           <td class="text-right">
-            {{ Number(spare_part.price).toLocaleString("ru-RU") }}
+            {{ spare_part.price }}
           </td>
         </tr>
       } @placeholder {

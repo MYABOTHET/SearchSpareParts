@@ -70,6 +70,4 @@ export class SparePartsTableUserComponent {
     ++spare_part.quantity_basket;
     this.submit(spare_part);
   }
-
-  protected readonly Number = Number;
 }

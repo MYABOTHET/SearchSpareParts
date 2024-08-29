@@ -10,5 +10,4 @@ import { SparePart } from '../../../../shared/interfaces/spare-part';
 })
 export class SparePartCardComponent {
   @Input({ required: true }) spare_part!: SparePart;
-  protected readonly Number = Number;
 }

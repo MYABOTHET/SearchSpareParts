@@ -25,16 +25,16 @@
           <td>{{ spare_part.article }}</td>
           <td>{{ spare_part.name }}</td>
           <td class="text-right">
-            {{ Number(spare_part.quantity).toLocaleString("ru-RU") }}
+            {{ spare_part.quantity }}
           </td>
           <td class="text-right">
-            {{ Number(spare_part.price).toLocaleString("ru-RU") }}
+            {{ spare_part.price }}
           </td>
           <td class="text-right">
-            {{ Number(spare_part.price_two).toLocaleString("ru-RU") }}
+            {{ spare_part.price_two }}
           </td>
           <td class="text-right">
-            {{ Number(spare_part.price_three).toLocaleString("ru-RU") }}
+            {{ spare_part.price_three }}
           </td>
           <td class="py-0">
             <input
@@ -48,11 +48,7 @@
             />
           </td>
           <td class="text-right">
-            {{
-              (
-                Number(spare_part.quantity_basket) * Number(spare_part.price)
-              ).toLocaleString("ru-RU")
-            }}
+            {{ spare_part.sum }}
           </td>
           <td class="py-0">
             <div class="flex h-full">

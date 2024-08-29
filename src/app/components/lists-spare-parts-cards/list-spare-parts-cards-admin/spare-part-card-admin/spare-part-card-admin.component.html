@@ -39,28 +39,28 @@
       <p>Количество</p>
       <div></div>
     </div>
-    <p>{{ Number(spare_part.quantity) }}</p>
+    <p>{{ spare_part.quantity }}</p>
   </div>
   <div>
     <div>
       <p>Цена(1)</p>
       <div></div>
     </div>
-    <p>{{ Number(spare_part.price).toLocaleString("ru-RU") }}</p>
+    <p>{{ spare_part.price }}</p>
   </div>
   <div>
     <div>
       <p>Цена(2)</p>
       <div></div>
     </div>
-    <p>{{ Number(spare_part.price_two).toLocaleString("ru-RU") }}</p>
+    <p>{{ spare_part.price_two }}</p>
   </div>
   <div>
     <div>
       <p>Цена(3)</p>
       <div></div>
     </div>
-    <p>{{ Number(spare_part.price_three).toLocaleString("ru-RU") }}</p>
+    <p>{{ spare_part.price_three }}</p>
   </div>
   <div>
     <div>
@@ -85,11 +85,7 @@
       <div></div>
     </div>
     <p>
-      {{
-        (
-          Number(spare_part.quantity_basket) * Number(spare_part.price)
-        ).toLocaleString("ru-RU")
-      }}
+      {{ spare_part.sum }}
     </p>
   </div>
   <div class="h-7">

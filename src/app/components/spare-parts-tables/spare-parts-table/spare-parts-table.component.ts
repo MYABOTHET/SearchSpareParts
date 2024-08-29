@@ -10,5 +10,4 @@ import { SparePart } from '../../../shared/interfaces/spare-part';
 })
 export class SparePartsTableComponent {
   @Input() spare_parts: SparePart[] = [];
-  protected readonly Number = Number;
 }
