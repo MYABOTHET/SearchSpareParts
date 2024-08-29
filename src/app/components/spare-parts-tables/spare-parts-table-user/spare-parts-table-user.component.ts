@@ -33,41 +33,41 @@ export class SparePartsTableUserComponent {
     this.quantity_emitter.emit(spare_part);
   }
 
-  change_quantity(spare_part: SparePartUser, index: number): void {
-    let quantity_input: HTMLInputElement | undefined =
-      this.quantity_inputs.get(index)?.nativeElement;
-    if (spare_part.quantity_basket < 0 || spare_part.quantity_basket === null) {
-      spare_part.quantity_basket = 0;
-    } else if (spare_part.quantity_basket > spare_part.quantity) {
-      spare_part.quantity_basket = spare_part.quantity;
-    }
-    if (quantity_input) {
-      quantity_input.value = spare_part.quantity_basket.toString();
-    }
-    if (
-      this.old_index === index &&
-      this.old_quantity_basket === spare_part.quantity_basket
-    ) {
-      return;
-    }
-    this.old_index = index;
-    this.old_quantity_basket = spare_part.quantity_basket;
-    this.submit(spare_part);
-  }
-
-  minus(spare_part: SparePartUser): void {
-    if (spare_part.quantity_basket <= 0) {
-      return;
-    }
-    --spare_part.quantity_basket;
-    this.submit(spare_part);
-  }
-
-  add(spare_part: SparePartUser): void {
-    if (spare_part.quantity_basket >= spare_part.quantity) {
-      return;
-    }
-    ++spare_part.quantity_basket;
-    this.submit(spare_part);
-  }
+  // change_quantity(spare_part: SparePartUser, index: number): void {
+  //   let quantity_input: HTMLInputElement | undefined =
+  //     this.quantity_inputs.get(index)?.nativeElement;
+  //   if spare_part.quantity_basket) < 0 || spare_part.quantity_basket === null) {
+  //     spare_part.quantity_basket = 0;
+  //   } else if (spare_part.quantity_basket > spare_part.quantity) {
+  //     spare_part.quantity_basket = spare_part.quantity;
+  //   }
+  //   if (quantity_input) {
+  //     quantity_input.value = spare_part.quantity_basket.toString();
+  //   }
+  //   if (
+  //     this.old_index === index &&
+  //     this.old_quantity_basket === spare_part.quantity_basket
+  //   ) {
+  //     return;
+  //   }
+  //   this.old_index = index;
+  //   this.old_quantity_basket = spare_part.quantity_basket;
+  //   this.submit(spare_part);
+  // }
+  //
+  // minus(spare_part: SparePartUser): void {
+  //   if (spare_part.quantity_basket <= 0) {
+  //     return;
+  //   }
+  //   --spare_part.quantity_basket;
+  //   this.submit(spare_part);
+  // }
+  //
+  // add(spare_part: SparePartUser): void {
+  //   if (spare_part.quantity_basket >= spare_part.quantity) {
+  //     return;
+  //   }
+  //   ++spare_part.quantity_basket;
+  //   this.submit(spare_part);
+  // }
 }

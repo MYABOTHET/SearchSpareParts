@@ -47,7 +47,6 @@
         type="number"
         #quantity_input
         [(ngModel)]="spare_part.quantity_basket"
-        (input)="change_quantity(spare_part)"
       />
     </p>
   </div>
@@ -61,12 +60,12 @@
     </p>
   </div>
   <div class="h-7">
-    <button class="group w-full" (click)="add(spare_part)">
+    <button class="group w-full">
       <app-plus
         class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
       />
     </button>
-    <button class="group w-full" (click)="minus(spare_part)">
+    <button class="group w-full">
       <app-minus
         class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
       />
