@@ -26,7 +26,7 @@
           </td>
           <td class="py-0">
             <input
-              [id]="spare_part.article"
+              [id]="spare_part.search_index"
               class="h-full w-full bg-transparent text-right placeholder-slate-400 outline-none"
               placeholder="0"
               type="number"
@@ -38,7 +38,8 @@
           <td class="text-right">
             {{
               (
-                Number(spare_part.quantity_basket) * Number(spare_part.price)
+                parseInt(spare_part.quantity_basket) *
+                parseInt(spare_part.price)
               ).toLocaleString()
             }}
           </td>

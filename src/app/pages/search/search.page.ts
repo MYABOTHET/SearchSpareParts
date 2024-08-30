@@ -67,7 +67,9 @@ export class SearchPage implements OnInit, OnDestroy {
     this.search_query_emitter('');
   }
 
-  quantity_emitter(spare_part: SparePartUser): void {}
+  quantity_emitter(spare_part: SparePartUser): void {
+    console.log(spare_part);
+  }
 
   search_query_emitter(search_query: string): void {
     this.is_loaded = false;

@@ -1,12 +1,9 @@
 import {
   Component,
-  DoCheck,
   ElementRef,
   Input,
-  OnChanges,
   output,
   OutputEmitterRef,
-  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { SparePartUser } from '../../../../shared/interfaces/spare-part-user';
@@ -44,5 +41,5 @@ export class SparePartCardUserComponent {
     this.minus_emitter.emit(spare_part);
   }
 
-  protected readonly Number = Number;
+  protected readonly parseInt = parseInt;
 }

@@ -40,12 +40,12 @@ export class SparePartsTableUserComponent {
     let quantity_input: HTMLInputElement | undefined =
       this.quantity_inputs.get(index)?.nativeElement;
     if (
-      Number(spare_part.quantity_basket) < 0 ||
+      parseInt(spare_part.quantity_basket) < 0 ||
       spare_part.quantity_basket === null
     ) {
       spare_part.quantity_basket = '0';
     } else if (
-      Number(spare_part.quantity_basket) > Number(spare_part.quantity)
+      parseInt(spare_part.quantity_basket) > parseInt(spare_part.quantity)
     ) {
       spare_part.quantity_basket = spare_part.quantity;
     }
@@ -64,24 +64,24 @@ export class SparePartsTableUserComponent {
   }
 
   minus(spare_part: SparePartUser): void {
-    if (Number(spare_part.quantity_basket) <= 0) {
+    if (parseInt(spare_part.quantity_basket) <= 0) {
       return;
     }
     spare_part.quantity_basket = (
-      Number(spare_part.quantity_basket) - 1
+      parseInt(spare_part.quantity_basket) - 1
     ).toString();
     this.submit(spare_part);
   }
 
   add(spare_part: SparePartUser): void {
-    if (Number(spare_part.quantity_basket) >= Number(spare_part.quantity)) {
+    if (parseInt(spare_part.quantity_basket) >= parseInt(spare_part.quantity)) {
       return;
     }
     spare_part.quantity_basket = (
-      Number(spare_part.quantity_basket) + 1
+      parseInt(spare_part.quantity_basket) + 1
     ).toString();
     this.submit(spare_part);
   }
 
-  protected readonly Number = Number;
+  protected readonly parseInt = parseInt;
 }

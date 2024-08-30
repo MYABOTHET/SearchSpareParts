@@ -50,7 +50,8 @@
           <td class="text-right">
             {{
               (
-                Number(spare_part.quantity_basket) * Number(spare_part.price)
+                parseInt(spare_part.quantity_basket) *
+                parseInt(spare_part.price)
               ).toLocaleString()
             }}
           </td>
