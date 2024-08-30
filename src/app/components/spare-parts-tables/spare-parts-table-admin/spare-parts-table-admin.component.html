@@ -44,21 +44,28 @@
               type="number"
               #quantity_input
               [(ngModel)]="spare_part.quantity_basket"
+              (input)="change_quantity(spare_part, $index)"
             />
           </td>
           <td class="text-right">
-            {{ spare_part.sum }}
+            {{
+              (
+                Number(spare_part.quantity_basket) * Number(spare_part.price)
+              ).toLocaleString()
+            }}
           </td>
           <td class="py-0">
             <div class="flex h-full">
               <button class="group w-full">
                 <app-plus
                   class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
+                  (click)="add(spare_part)"
                 />
               </button>
               <button class="group w-full">
                 <app-minus
                   class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
+                  (click)="minus(spare_part)"
                 />
               </button>
             </div>

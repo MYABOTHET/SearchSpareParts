@@ -1,6 +1,11 @@
 @for (spare_part of spare_parts; track spare_part.search_index) {
   @defer (on viewport) {
-    <app-spare-part-card-admin [spare_part]="spare_part" />
+    <app-spare-part-card-admin
+      [spare_part]="spare_part"
+      (add_emitter)="add($event)"
+      (minus_emitter)="minus($event)"
+      (change_quantity_emitter)="change_quantity($event, $index)"
+    />
   } @placeholder {
     <div class="h-32"></div>
   }
