@@ -57,16 +57,14 @@
           </td>
           <td class="py-0">
             <div class="flex h-full">
-              <button class="group w-full">
+              <button class="group w-full" (click)="add(spare_part)">
                 <app-plus
                   class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
-                  (click)="add(spare_part)"
                 />
               </button>
-              <button class="group w-full">
+              <button class="group w-full" (click)="minus(spare_part)">
                 <app-minus
                   class="m-auto h-3 w-3 fill-slate-400 duration-75 group-hover:fill-slate-500"
-                  (click)="minus(spare_part)"
                 />
               </button>
             </div>

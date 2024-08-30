@@ -30,8 +30,6 @@ export class SparePartsTableUserComponent {
   private old_index: string | null = null;
   private old_quantity_basket: string | null = null;
 
-  constructor(private basketService: BasketService) {}
-
   submit(spare_part: SparePartUser): void {
     this.quantity_emitter.emit(spare_part);
   }
@@ -60,6 +58,7 @@ export class SparePartsTableUserComponent {
     }
     this.old_index = index.toString();
     this.old_quantity_basket = spare_part.quantity_basket;
+    spare_part.quantity_basket = spare_part.quantity_basket.toString();
     this.submit(spare_part);
   }
 
