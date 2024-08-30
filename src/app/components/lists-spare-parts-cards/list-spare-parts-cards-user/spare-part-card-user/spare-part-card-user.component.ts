@@ -43,8 +43,8 @@ export class SparePartCardUserComponent {
 
   findSum(spare_part: SparePartUser): string {
     return (
-      parseInt(String(spare_part.quantity_basket).replace(/ /g, '')) *
-      parseInt(String(spare_part.price).replace(/ /g, ''))
+      parseInt(spare_part.quantity_basket.replace(/\s+/g, ''), 10) *
+      parseInt(spare_part.price.replace(/\s+/g, ''), 10)
     ).toLocaleString();
   }
 
