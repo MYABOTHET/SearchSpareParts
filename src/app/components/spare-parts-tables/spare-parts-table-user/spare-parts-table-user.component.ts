@@ -82,5 +82,12 @@ export class SparePartsTableUserComponent {
     this.submit(spare_part);
   }
 
+  findSum(spare_part: SparePartUser): string {
+    return (
+      parseInt(String(spare_part.quantity_basket).replace(/ /g, '')) *
+      parseInt(String(spare_part.price).replace(/ /g, ''))
+    ).toLocaleString();
+  }
+
   protected readonly parseInt = parseInt;
 }

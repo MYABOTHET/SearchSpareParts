@@ -85,11 +85,7 @@
       <div></div>
     </div>
     <p>
-      {{
-        (
-          parseInt(spare_part.quantity_basket) * parseInt(spare_part.price)
-        ).toLocaleString()
-      }}
+      {{ findSum(spare_part) }}
     </p>
   </div>
   <div class="h-7">
