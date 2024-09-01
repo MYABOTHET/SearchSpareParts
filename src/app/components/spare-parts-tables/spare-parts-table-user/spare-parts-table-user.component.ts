@@ -11,8 +11,6 @@ import { SparePartUser } from '../../../shared/interfaces/spare-part-user';
 import { PlusComponent } from '../../svg/plus/plus.component';
 import { MinusComponent } from '../../svg/minus/minus.component';
 import { FormsModule } from '@angular/forms';
-import { SparePartsTableComponent } from '../spare-parts-table/spare-parts-table.component';
-import { BasketService } from '../../../shared/services/basket.service';
 
 @Component({
   selector: 'app-spare-parts-table-user',
@@ -63,31 +61,36 @@ export class SparePartsTableUserComponent {
   }
 
   minus(spare_part: SparePartUser): void {
-    if (parseInt(spare_part.quantity_basket) <= 0) {
+    if (this.myParseInt(spare_part.quantity_basket) <= 0) {
       return;
     }
     spare_part.quantity_basket = (
-      parseInt(spare_part.quantity_basket) - 1
+      this.myParseInt(spare_part.quantity_basket) - 1
     ).toString();
     this.submit(spare_part);
   }
 
   add(spare_part: SparePartUser): void {
-    if (parseInt(spare_part.quantity_basket) >= parseInt(spare_part.quantity)) {
+    if (
+      this.myParseInt(spare_part.quantity_basket) >=
+      this.myParseInt(spare_part.quantity)
+    ) {
       return;
     }
     spare_part.quantity_basket = (
-      parseInt(spare_part.quantity_basket) + 1
+      this.myParseInt(spare_part.quantity_basket) + 1
     ).toString();
     this.submit(spare_part);
   }
 
   findSum(spare_part: SparePartUser): string {
     return (
-      parseInt(spare_part.quantity_basket.replace(/\s+/g, ''), 10) *
-      parseInt(spare_part.price.replace(/\s+/g, ''), 10)
+      this.myParseInt(spare_part.quantity_basket) *
+      this.myParseInt(spare_part.price)
     ).toLocaleString();
   }
 
-  protected readonly parseInt = parseInt;
+  myParseInt(value: string): number {
+    return parseInt(value.replace(/\s+/g, ''), 10);
+  }
 }

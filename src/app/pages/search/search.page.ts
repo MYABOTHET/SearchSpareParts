@@ -14,6 +14,9 @@ import { SpinnerLoadComponent } from '../../components/svg/spinner-load/spinner-
 import { AuthService } from '../../shared/services/auth.service';
 import { SearchService } from '../../shared/services/search.service';
 import { SparePart } from '../../shared/interfaces/spare-part';
+import { BasketService } from '../../shared/services/basket.service';
+import { ChangeBasket } from '../../shared/interfaces/change-basket';
+import { NewQuantityBasket } from '../../shared/interfaces/new-quantity-basket';
 
 @Component({
   selector: 'app-search',
@@ -47,6 +50,7 @@ export class SearchPage implements OnInit, OnDestroy {
     private breakpointObserver: BreakpointObserver,
     public authService: AuthService,
     private search_service: SearchService,
+    private basket_service: BasketService,
   ) {}
 
   ngOnInit(): void {
@@ -68,7 +72,20 @@ export class SearchPage implements OnInit, OnDestroy {
   }
 
   quantity_emitter(spare_part: SparePartUser): void {
-    console.log(spare_part);
+    let change_basket: ChangeBasket = {
+      quantity_basket: this.myParseInt(spare_part.quantity_basket),
+      search_index: spare_part.search_index,
+    };
+    this.basket_service.change_basket(change_basket).subscribe({
+      next: (value: NewQuantityBasket) => {
+        spare_part.sum = value.sum;
+      },
+      error: (error) => {},
+    });
+  }
+
+  myParseInt(value: string): number {
+    return parseInt(value.replace(/\s+/g, ''), 10);
   }
 
   search_query_emitter(search_query: string): void {
