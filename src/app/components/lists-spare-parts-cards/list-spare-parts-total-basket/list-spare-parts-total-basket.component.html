@@ -1,0 +1,7 @@
+@for (spare_part of spare_parts; track spare_part.search_index) {
+  @defer (on viewport) {
+    <app-spare-part-total-basket-card [spare_part]="spare_part" />
+  } @placeholder {
+    <div class="h-32"></div>
+  }
+}

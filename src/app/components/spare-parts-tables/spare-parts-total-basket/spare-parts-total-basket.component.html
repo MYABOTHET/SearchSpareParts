@@ -1,0 +1,54 @@
+<table class="spare-parts-table">
+  <thead>
+  <tr>
+    <th class="w-24">Бренд</th>
+    <th class="w-28">Артикул</th>
+    <th>Наименование</th>
+    <th class="w-20">Кол-во</th>
+    <th class="w-20">Цена</th>
+    <th class="w-20">В корзине</th>
+    <th class="w-20">Сумма</th>
+    <th class="w-32">Итого в корзине</th>
+    <th class="w-32">Итоговая сумма</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (spare_part of spare_parts; track spare_part.search_index) {
+      @defer (on viewport) {
+        <tr>
+          <td>{{ spare_part.brand }}</td>
+          <td>{{ spare_part.article }}</td>
+          <td>{{ spare_part.name }}</td>
+          <td class="text-right">
+            {{ spare_part.quantity }}
+          </td>
+          <td class="text-right">
+            {{ spare_part.price }}
+          </td>
+          <td class="text-right">
+            {{ spare_part.quantity_basket }}
+          </td>
+          <td class="text-right">
+            {{ findSum(spare_part) }}
+          </td>
+          <td class="text-right font-medium" [ngClass]="{
+          'text-red-600': spare_part.quantity_basket != spare_part.total_quantity_basket,
+          'text-green-600': spare_part.quantity_basket == spare_part.total_quantity_basket,
+          }">
+            {{ spare_part.total_quantity_basket }}
+          </td>
+          <td class="text-right font-medium" [ngClass]="{
+          'text-red-600': spare_part.quantity_basket != spare_part.total_quantity_basket,
+          'text-green-600': spare_part.quantity_basket == spare_part.total_quantity_basket,
+          }">
+            {{ findTotalSum(spare_part) }}
+          </td>
+        </tr>
+      } @placeholder {
+        <tr class="text-slate-400">
+          <td colspan="5">Загрузка...</td>
+        </tr>
+      }
+    }
+  </tbody>
+</table>

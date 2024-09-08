@@ -4,7 +4,7 @@
       [spare_part]="spare_part"
       (add_emitter)="add($event)"
       (minus_emitter)="minus($event)"
-      (change_quantity_emitter)="change_quantity($event, $index)"
+      (change_quantity_emitter)="change_quantity($event, $index, spare_part.quantity_basket)"
     />
   } @placeholder {
     <div class="h-32"></div>

@@ -1,0 +1,71 @@
+<div class="spare-part-card">
+  <div>
+    <div>
+      <p>Бренд</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.brand }}</p>
+  </div>
+  <div>
+    <div>
+      <p>Артикул</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.article }}</p>
+  </div>
+  <div>
+    <div>
+      <p>Наименование</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.name }}</p>
+  </div>
+  <div>
+    <div>
+      <p>Количество</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.quantity }}</p>
+  </div>
+  <div>
+    <div>
+      <p>Цена</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.price }}</p>
+  </div>
+  <div>
+    <div>
+      <p>В корзине</p>
+      <div></div>
+    </div>
+    <p>{{ spare_part.quantity_basket }}</p>
+  </div>
+  <div>
+    <div>
+      <p>Сумма</p>
+      <div></div>
+    </div>
+    <p>{{ findSum(spare_part) }}</p>
+  </div>
+  <div>
+    <div>
+      <p >Итого в корзине</p>
+      <div></div>
+    </div>
+    <p class="font-medium" [ngClass]="{
+          'text-red-600': spare_part.quantity_basket != spare_part.total_quantity_basket,
+          'text-green-600': spare_part.quantity_basket == spare_part.total_quantity_basket,
+          }">{{ spare_part.total_quantity_basket }}</p>
+  </div>
+  <div>
+    <div>
+      <p >Итоговая сумма</p>
+      <div></div>
+    </div>
+    <p class="font-medium" [ngClass]="{
+          'text-red-600': spare_part.quantity_basket != spare_part.total_quantity_basket,
+          'text-green-600': spare_part.quantity_basket == spare_part.total_quantity_basket,
+          }">{{ findTotalSum(spare_part) }}</p>
+  </div>
+</div>

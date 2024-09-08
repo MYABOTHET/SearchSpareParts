@@ -17,6 +17,7 @@ import { SparePart } from '../../shared/interfaces/spare-part';
 import { BasketService } from '../../shared/services/basket.service';
 import { ChangeBasket } from '../../shared/interfaces/change-basket';
 import { NewQuantityBasket } from '../../shared/interfaces/new-quantity-basket';
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: 'app-search',
@@ -44,6 +45,7 @@ export class SearchPage implements OnInit, OnDestroy {
   spare_parts: SparePart[] = [];
   spare_parts_user: SparePartUser[] = [];
   spare_parts_admin: SparePartAdmin[] = [];
+  is_confirm: boolean = false;
   is_screen_small: boolean = false;
 
   constructor(
@@ -54,6 +56,14 @@ export class SearchPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.basket_service.basket_process().subscribe({
+      next: _ => {
+        this.is_confirm = true;
+      },
+      error: _ => {
+        this.is_confirm = false;
+      }
+    })
     let max_width: string = '(max-width: 600px)';
     if (this.authService.isAuth()) {
       switch (this.get_role()) {
@@ -71,16 +81,22 @@ export class SearchPage implements OnInit, OnDestroy {
     this.search_query_emitter('');
   }
 
-  quantity_emitter(spare_part: SparePartUser): void {
+  quantity_emitter(event: [string, SparePartUser]): void {
+    if (this.is_confirm) {
+      event[1].quantity_basket = event[0];
+      return;
+    }
     let change_basket: ChangeBasket = {
-      quantity_basket: this.myParseInt(spare_part.quantity_basket),
-      search_index: spare_part.search_index,
+      quantity_basket: this.myParseInt(event[1].quantity_basket),
+      search_index: event[1].search_index,
     };
     this.basket_service.change_basket(change_basket).subscribe({
       next: (value: NewQuantityBasket) => {
-        spare_part.sum = value.sum;
+        event[1].sum = value.sum;
       },
-      error: (error) => {},
+      error: (error: HttpErrorResponse) => {
+        event[1].quantity_basket = event[0];
+      },
     });
   }
 

@@ -1,1 +1,67 @@
-Корзина
+<div class="h-20"></div>
+
+@if (is_loaded) {
+  @if (!is_error) {
+    @if (spare_parts_basket.spare_parts.length) {
+      <div class="mb-4 flex h-8 w-full justify-center items-center gap-4">
+        @if (!spare_parts_basket.basket_confirmed) {
+          @if (!spare_parts_basket.basket_processed) {
+            <button (click)="confirm()"
+              class="h-full rounded border-b-2 border-b-blue-700 bg-blue-600 px-8 text-xs font-medium text-white"
+            >
+              Заказать
+            </button>
+          } @else {
+            <span class="text-xs text-slate-400">Ваш заказ обрабатывается...</span>
+          }
+        } @else {
+          <button
+            class="h-full rounded border-b-2 border-b-green-600 bg-green-500 px-8 text-xs font-medium text-white"
+          >
+            Купить
+          </button>
+          <button
+            class="h-full rounded border-b-2 border-b-red-600 bg-red-500 px-8 text-xs font-medium text-white"
+          >
+            Отменить
+          </button>
+        }
+      </div>
+      @if (spare_parts_basket.basket_confirmed) {
+        @if (is_screen_small) {
+          <app-list-spare-parts-total-basket
+            [spare_parts]="spare_parts_basket.spare_parts"
+            class="flex w-full flex-col gap-4"
+          />
+        } @else {
+          <app-spare-parts-total-basket
+            [spare_parts]="spare_parts_basket.spare_parts"
+            class="w-full max-w-screen-2xl"
+          />
+        }
+      } @else {
+        @if (is_screen_small) {
+          <app-list-spare-parts-cards-user
+            [spare_parts]="spare_parts_basket.spare_parts"
+            class="flex w-full flex-col gap-4"
+            (quantity_emitter)="quantity_emitter($event)"
+          />
+        } @else {
+          <app-spare-parts-table-user
+            [spare_parts]="spare_parts_basket.spare_parts"
+            class="w-full max-w-screen-xl"
+            (quantity_emitter)="quantity_emitter($event)"
+          />
+        }
+      }
+    } @else {
+      <span class="text-xs text-slate-400">В корзине ничего нет</span>
+    }
+  } @else {
+    <span class="text-xs text-slate-400">Произошла ошибка</span>
+  }
+} @else {
+  <app-spinner-load class="h-10 w-10 fill-blue-600" />
+}
+
+<div class="h-4"></div>

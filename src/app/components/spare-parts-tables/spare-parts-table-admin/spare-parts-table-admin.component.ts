@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { MinusComponent } from '../../svg/minus/minus.component';
 import { PlusComponent } from '../../svg/plus/plus.component';
 import { SparePartAdmin } from '../../../shared/interfaces/spare-part-admin';
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: 'app-spare-parts-table-admin',
   standalone: true,
-  imports: [FormsModule, MinusComponent, PlusComponent],
+  imports: [FormsModule, MinusComponent, PlusComponent, NgClass],
   templateUrl: './spare-parts-table-admin.component.html',
   styleUrl: './spare-parts-table-admin.component.css',
 })
